@@ -18,18 +18,18 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th scope="col"></th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Position</th>
+              <th scope="col">Nationality</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(teamSquad, i) in squad" :key="teamSquad.id">
               <th scope="row">{{ i + 1 }}</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{{ teamSquad.name }}</td>
+              <td>{{ teamSquad.position }}</td>
+              <td>{{ teamSquad.nationality }}</td>
             </tr>
           </tbody>
         </table>
