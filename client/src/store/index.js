@@ -1,13 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
 
 export default new Vuex.Store({
   state: {
     areas: [],
-    clubs: []
+    clubs: [],
+    club: JSON.parse(localStorage.getItem('club') || '{}'),
+    squad: []
   },
   mutations: {
     SET_AREAS (state, payload) {
@@ -16,6 +23,14 @@ export default new Vuex.Store({
 
     SET_ALL_CLUB (state, payload) {
       state.clubs = payload
+    },
+
+    SET_CLUB (state, payload) {
+      state.club = payload
+    },
+
+    SET_SQUAD (state, payload) {
+      state.squad = payload
     }
   },
   actions: {
@@ -54,7 +69,26 @@ export default new Vuex.Store({
       } catch (err) {
         console.log(err)
       }
+    },
+
+    async actionProfileClub (context, payload) {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `http://api.football-data.org/v2/teams/${payload}`,
+          headers: {
+            'X-Auth-Token': '8399a7988b4e4ba2b2aeae585bdc390b'
+          }
+        })
+        const { data } = response
+        localStorage.setItem('club', JSON.stringify(data))
+        context.commit('SET_CLUB', data)
+        context.commit('SET_SQUAD', data.squad)
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
-  modules: {}
+  modules: {},
+  plugins: [vuexLocal.plugin]
 })

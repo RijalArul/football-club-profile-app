@@ -21,7 +21,12 @@
               />
               <div class="card-body">
                 <p class="card-text">{{ club.name }}</p>
-                <button class="btn btn-info">Read More</button>
+                <button
+                  class="btn btn-info"
+                  @click.prevent="clickProfile(club.id)"
+                >
+                  Read More
+                </button>
               </div>
             </div>
           </div>
@@ -42,6 +47,9 @@ export default {
   methods: {
     fetchAllClub() {
       this.$store.dispatch("actionFetchAllClub", this.$route.params.id);
+    },
+    clickProfile(id) {
+      this.$router.push({ name: "ProfileClub", params: { id: id } });
     },
   },
   created() {

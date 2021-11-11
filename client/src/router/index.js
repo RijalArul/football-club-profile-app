@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AllClub from '../views/AllClub.vue'
+import ProfileClub from '../views/ProfileClub.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/areas/:id/club',
     name: 'AllClub',
     component: AllClub
+  },
+  {
+    path: 'club/:id',
+    name: 'ProfileClub',
+    component: ProfileClub
   }
 ]
 
