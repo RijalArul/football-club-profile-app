@@ -37,7 +37,7 @@
                   data-toggle="modal"
                   data-target="#exampleModal"
                 >
-                  Launch demo modal
+                  {{ teamSquad.name }}
                 </button>
 
                 <div
@@ -52,7 +52,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                          Modal title
+                          {{ teamSquad.name }}
                         </h5>
                         <button
                           type="button"
@@ -63,7 +63,13 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">...</div>
+                      <div class="modal-body">
+                        <div class="float-right">
+                          <h5>Club : {{ club.name }}</h5>
+                          <h5>Position : {{ teamSquad.position }}</h5>
+                          <h5>Nationality : {{ teamSquad.nationality }}</h5>
+                        </div>
+                      </div>
                       <div class="modal-footer">
                         <button
                           type="button"
