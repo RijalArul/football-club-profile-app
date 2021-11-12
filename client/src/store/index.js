@@ -9,7 +9,8 @@ export default new Vuex.Store({
     areas: [],
     clubs: [],
     club: JSON.parse(localStorage.getItem('club') || '{}'),
-    squad: []
+    squad: [],
+    player: JSON.parse(localStorage.getItem('player') || '{}')
   },
   mutations: {
     SET_AREAS (state, payload) {
@@ -26,6 +27,10 @@ export default new Vuex.Store({
 
     SET_SQUAD (state, payload) {
       state.squad = payload
+    },
+
+    SET_PLAYER (state, payload) {
+      state.player = payload
     }
   },
   actions: {
@@ -86,6 +91,17 @@ export default new Vuex.Store({
 
     async actionPlayerProfile (context, payload) {
       try {
+        const response = await axios({
+          method: 'GET',
+          url: `http://api.football-data.org/v2/players/${payload}`,
+          headers: {
+            'X-Auth-Token': '8399a7988b4e4ba2b2aeae585bdc390b'
+          }
+        })
+
+        const { data } = response
+        localStorage.setItem('player', JSON.stringify(data))
+        context.commit('SET_PLAYER', data)
       } catch (err) {
         console.log(err)
       }
