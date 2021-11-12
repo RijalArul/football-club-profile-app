@@ -23,5 +23,10 @@
 export default {
   name: "CardCountry",
   props: ["area"],
+  methods: {
+    clickAllClub(id) {
+      this.$router.push({ name: "AllClub", params: { id: id } });
+    },
+  },
 };
 </script>

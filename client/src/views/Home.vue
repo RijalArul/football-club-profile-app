@@ -51,9 +51,6 @@ export default {
     fetchAreas() {
       this.$store.dispatch("actionFetchAreas");
     },
-    clickAllClub(id) {
-      this.$router.push({ name: "AllClub", params: { id: id } });
-    },
   },
   computed: {
     areas() {
