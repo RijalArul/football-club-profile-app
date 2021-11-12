@@ -36,6 +36,7 @@
                   class="btn btn-primary"
                   data-toggle="modal"
                   data-target="#exampleModal"
+                  @click.prevent="fetchPlayerProfile(teamSquad.id)"
                 >
                   {{ teamSquad.name }}
                 </button>
@@ -105,6 +106,9 @@ export default {
   methods: {
     fetchClub() {
       this.$store.dispatch("actionProfileClub", this.$route.params.id);
+    },
+    fetchPlayerProfile(id) {
+      this.$store.dispatch("actionPlayerProfile", id);
     },
   },
   created() {

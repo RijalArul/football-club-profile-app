@@ -82,6 +82,13 @@ export default new Vuex.Store({
       } catch (err) {
         console.log(err)
       }
+    },
+
+    async actionPlayerProfile (context, payload) {
+      try {
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   modules: {}
