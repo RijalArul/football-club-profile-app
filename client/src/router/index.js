@@ -18,7 +18,7 @@ const routes = [
     component: AllClub
   },
   {
-    path: 'club/:id',
+    path: '/:id',
     name: 'ProfileClub',
     component: ProfileClub
   }
