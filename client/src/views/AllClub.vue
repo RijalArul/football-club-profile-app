@@ -12,23 +12,7 @@
             v-for="club in clubs"
             :key="club.name"
           >
-            <div class="card" style="width: 18rem; height: 450px">
-              <img
-                class="card-img-top"
-                alt="Card image cap"
-                :src="club.crestUrl"
-                style="height: 280px"
-              />
-              <div class="card-body">
-                <p class="card-text">{{ club.name }}</p>
-                <button
-                  class="btn btn-info"
-                  @click.prevent="clickProfile(club.id)"
-                >
-                  Read More
-                </button>
-              </div>
-            </div>
+            <CardAllClub :club="club" />
           </div>
         </div>
       </div>
@@ -37,8 +21,13 @@
 </template>
 
 <script>
+import CardAllClub from "../components/CardAllClub.vue";
 export default {
   name: "AllClub",
+  props: ["club"],
+  components: {
+    CardAllClub,
+  },
   computed: {
     clubs() {
       return this.$store.state.clubs;
@@ -47,9 +36,6 @@ export default {
   methods: {
     fetchAllClub() {
       this.$store.dispatch("actionFetchAllClub", this.$route.params.id);
-    },
-    clickProfile(id) {
-      this.$router.push({ name: "ProfileClub", params: { id: id } });
     },
   },
   created() {
