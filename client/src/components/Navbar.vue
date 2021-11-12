@@ -1,7 +1,9 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Football App</a>
+      <a class="navbar-brand" href="#" @click.prevent="clickHome"
+        >Football App</a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -27,5 +29,10 @@
 <script>
 export default {
   name: "Navbar",
+  methods: {
+    clickHome() {
+      this.$router.push({ name: "Home" });
+    },
+  },
 };
 </script>
