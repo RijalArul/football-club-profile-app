@@ -66,9 +66,9 @@
                       </div>
                       <div class="modal-body">
                         <div class="float-right">
-                          <h5>Club : {{ club.name }}</h5>
-                          <h5>Position : {{ teamSquad.position }}</h5>
-                          <h5>Nationality : {{ teamSquad.nationality }}</h5>
+                          <h5>FIrst Name : {{ player.firstName }}</h5>
+                          <h5>Position : {{ player.position }}</h5>
+                          <h5>Nationality : {{ player.nationality }}</h5>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -101,6 +101,10 @@ export default {
 
     squad() {
       return this.$store.state.squad;
+    },
+
+    player() {
+      return this.$store.state.player;
     },
   },
   methods: {
